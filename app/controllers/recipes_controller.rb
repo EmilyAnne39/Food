@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
     before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
     def your_recipes
-      
+
     end
 
     def user_recipes
@@ -33,39 +33,28 @@ class RecipesController < ApplicationController
     def create
       @recipe = Recipe.new(recipe_params)
 
-      respond_to do |format|
         if @recipe.save
-          format.html { redirect_to @recipe, notice: 'Blog post was successfully created.' }
-          format.json { render :show, status: :created, location: @recipe }
+          redirect_to @recipe, notice: 'Recipe was successfully created.'
         else
-          format.html { render :new }
-          format.json { render json: @recipe.errors, status: :unprocessable_entity }
-        end
+          render :new
       end
     end
 
     # PATCH/PUT /recipes/1
     # PATCH/PUT /recipes/1.json
     def update
-      respond_to do |format|
         if @recipe.update(recipe_params)
-          format.html { redirect_to @recipe, notice: 'Delicious.' }
-          format.json { render :show, status: :ok, location: @recipe }
+          redirect_to @recipe, notice: 'Delicious.'
         else
-          format.html { render :edit }
-          format.json { render json: @recipe.errors, status: :unprocessable_entity }
+           render :edit
         end
-      end
     end
 
     # DELETE /recipes/1
     # DELETE /recipes/1.json
     def destroy
       @recipe.destroy
-      respond_to do |format|
-        format.html { redirect_to recipes_url, notice: 'Uneaten.' }
-        format.json { head :no_content }
-      end
+       redirect_to recipes_url, notice: 'Uneaten.'
     end
 
     private
