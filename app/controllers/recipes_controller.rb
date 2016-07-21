@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
     before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
-    def your_recipes
+    def my_recipes 
 
     end
 
@@ -68,5 +68,3 @@ class RecipesController < ApplicationController
         params.require(:recipe).permit(:title, :recipe_ingredients, :avatar, :recipe_instructions, :user_id)
       end
   end
-
-end

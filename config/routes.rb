@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   root 'recipes#index'
 
+  get 'my_recipes' => 'recipes#my_recipes'
+
+  get 'user_recipes' => 'recipes#user_recipes' 
+
   get 'recipes/show'
 
   get 'recipes/edit'
