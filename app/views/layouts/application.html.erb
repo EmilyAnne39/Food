@@ -18,10 +18,10 @@
   <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
-        <li><%= link_to 'FoodScape', root_path, class: "navbar-brand" %></li>
+        <li><%= link_to 'The Grubdex', root_path, class: "navbar-brand" %></li>
     <% if user_signed_in? %>
-        <li><%= link_to 'My Food', my_recipes_path, class: "navbar-link" %></li>
-        <li><%= link_to 'MySelf-ness', edit_user_registration_path, class: "navbar-link" %></li>
+        <li><%= link_to 'My Grubfolio', my_recipes_path, class: "navbar-link" %></li>
+        <li><%= link_to 'My Grubfile', edit_user_registration_path, class: "navbar-link" %></li>
       </ul>
         <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "btn btn-default navbar-btn navbar-right" %>
     <% else %>

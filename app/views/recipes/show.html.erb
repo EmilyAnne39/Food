@@ -1,17 +1,31 @@
 <p id="notice"><%= notice %></p>
 
+<h4>Grub Recipe</h4>
 <div class="panel panel-primary"> 
   <div class="panel heading">
     <%= @recipe.title %>
   </div>
-  
+</div>
+
+<h4>Ingredients</h4>
+<div class="panel panel-primary"> 
+  <div class="panel heading">
+    <%= @recipe.recipe_ingredients %>
+  </div>
+</div>
+
+<h4>Instructions</h4>
+<div class="panel panel-primary"> 
+  <div class="panel heading">
+  <%= @recipe.recipe_instructions %>
+  </div>
+</div>
+
 <div class="panel-body">
   by <strong><%= link_to @recipe.user.username, 
   user_recipes_path(id: @recipe.user.id) %></strong>
   <span class="posted at">posted at: <%= @recipe.created_at.strftime('%m/%d/%Y at %I:%M%p') %></span><br />
-  <p>
-    <%= @recipe.recipe_entry %>
-  </p>
+
 </div>
 
 <% if current_user.id == @recipe.user.id %>
@@ -37,7 +51,7 @@
   <% @recipe.comments.each do |comment| %>
   <div class="panel panel-success">
    <div class="panel-body">
-     <p><strong><%= link_to comment.user.username, user_posts_path(id: comment.user.id) %></strong> said: </p>
+     <p><strong><%= link_to comment.user.username, user_recipes_path(id: comment.user.id) %></strong> said: </p>
      <p><%= comment.comment_entry %></p>
      <p><span class="posted-at"><%= comment.created_at.strftime ('%m/%d/%Y %H:%M:%S') %></span></p>
      <%= link_to "Edit Comment", edit_recipe_path(@recipe, comment) %>

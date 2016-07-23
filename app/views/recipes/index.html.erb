@@ -8,13 +8,13 @@
             <%=recipe.title %>
           </div>
           <div class="panel-body">
-            by <strong><%= link_to recipe.user.username, user_posts_path(id: recipe.user.id) %></strong>
+            by <strong><%= link_to recipe.user.username, user_recipes_path(id: recipe.user.id) %></strong>
             <p><span class="posted-at">posted at: <%=recipe.
             created_at.strftime('%m/%d/%Y at %I:%M%p') %></span></p>
-            <p><%= truncate(recipe.recipe_entry, length:250, separator: ' ') %></p>
-            <%= link_to "Learn More About #{recipe_post.title}", recipe %>
+            <p><%= truncate(recipe.recipe_instructions, length:250, separator: ' ') %></p>
+            <%= link_to "Learn More About #{recipe.title}", recipe %>
           </div>
-          <% if current_user.id == recipe.user.id %>
+          <% if user_signed_in? && current_user.id == recipe.user.id %>
           <div class="panel-footer">
             <%= link_to 'Edit', edit_recipe_path(recipe), class: "btn btn-warning" %>
             <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
